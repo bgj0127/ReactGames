@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./styles.css";
 
 const WordRelay = () => {
   const [word, setWord] = useState("나무");

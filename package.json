@@ -1,11 +1,8 @@
 {
-  "name": "react",
+  "name": "reactgames",
   "version": "1.0.0",
-  "description": "React example starter project",
-  "keywords": [
-    "react",
-    "starter"
-  ],
+  "description": "Create a Simple Game Using React",
+  "keywords": [],
   "main": "src/index.js",
   "dependencies": {
     "react": "16.12.0",

@@ -1,4 +1,22 @@
-.App {
+.WordRelay {
   font-family: sans-serif;
   text-align: center;
+}
+
+input {
+  background-color: aliceblue;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  width: 150px;
+  height: 30px;
+}
+
+button {
+  border: none;
+  width: 40px;
+  height: 30px;
+  border-radius: 4px;
+
+  margin: 2px;
 }
