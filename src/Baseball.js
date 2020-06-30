@@ -57,13 +57,23 @@ class Baseball extends Component {
             ball += 1;
           }
         }
-        this.setState({
-          tries: [
-            ...this.state.tries,
-            { try: this.state.value, result: `${strike}strike, ${ball}ball` }
-          ],
-          value: ""
-        });
+        if (ball === 0 && strike === 0) {
+          this.setState({
+            tries: [
+              ...this.state.tries,
+              { try: this.state.value, result: "Out!" }
+            ],
+            value: ""
+          });
+        } else {
+          this.setState({
+            tries: [
+              ...this.state.tries,
+              { try: this.state.value, result: `${strike}strike, ${ball}ball` }
+            ],
+            value: ""
+          });
+        }
       }
     }
   };
@@ -80,6 +90,7 @@ class Baseball extends Component {
         <h1>{this.state.result}</h1>
         <form onSubmit={this.onSubmitForm}>
           <input
+            minLength={4}
             maxLength={4}
             value={this.state.value}
             onChange={this.OnChangeInput}
