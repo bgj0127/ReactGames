@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import WordRelay from "./WordRelay";
-import Baseball from "./Baseball";
+import ResponseCheck from "./ResponseCheck";
 // import App from "./App";
 
-ReactDOM.render(<Baseball />, document.getElementById("root"));
+ReactDOM.render(<ResponseCheck />, document.getElementById("root"));

@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useRef, useState, memo } from "react";
 import Try from "./Try";
 
 function getNumber() {
@@ -16,6 +16,7 @@ const Baseball = memo(() => {
   const [value, setValue] = useState("");
   const [answer, setAnswer] = useState(getNumber());
   const [tries, setTries] = useState([]);
+  const inputRef = useRef();
 
   const onSubmitForm = e => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const Baseball = memo(() => {
         return [...prevTries, { try: value, result: "Homerun!" }];
       });
       alert("게임을 다시 시작합니다.");
+      inputRef.current.focus();
       setValue("");
       setAnswer(getNumber());
       setTries([]);
@@ -35,6 +37,7 @@ const Baseball = memo(() => {
       if (tries.length >= 9) {
         setResult(`10번 시도했습니다. 답은 ${answer} 였습니다.`);
         alert("게임을 다시 시작합니다.");
+        inputRef.current.focus();
         setValue("");
         setAnswer(getNumber());
         setTries([]);
@@ -75,6 +78,7 @@ const Baseball = memo(() => {
         <input
           minLength={4}
           maxLength={4}
+          ref={inputRef}
           value={value}
           onChange={onChangeInput}
         />
