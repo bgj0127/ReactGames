@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import Try from "./Try";
 
 function getNumber() {
@@ -11,7 +11,7 @@ function getNumber() {
   return array;
 }
 
-const Baseball = () => {
+const Baseball = memo(() => {
   const [result, setResult] = useState("");
   const [value, setValue] = useState("");
   const [answer, setAnswer] = useState(getNumber());
@@ -48,12 +48,15 @@ const Baseball = () => {
         }
         if (ball === 0 && strike === 0) {
           setTries(prevTries => {
-            return [...prevTries, { try: value, result: "Homerun!" }];
+            return [...prevTries, { try: value, result: "Out!" }];
           });
           setValue("");
         } else {
           setTries(prevTries => {
-            return [...prevTries, { try: value, result: "Homerun!" }];
+            return [
+              ...prevTries,
+              { try: value, result: `${strike}strike ${ball}ball` }
+            ];
           });
           setValue("");
         }
@@ -61,7 +64,7 @@ const Baseball = () => {
     }
   };
 
-  const OnChangeInput = e => {
+  const onChangeInput = e => {
     setValue(e.target.value);
   };
 
@@ -73,7 +76,7 @@ const Baseball = () => {
           minLength={4}
           maxLength={4}
           value={value}
-          onChange={OnChangeInput}
+          onChange={onChangeInput}
         />
       </form>
       <div>시도: {tries.length}</div>
@@ -84,6 +87,6 @@ const Baseball = () => {
       </ul>
     </>
   );
-};
+});
 
 export default Baseball;
